@@ -1,5 +1,5 @@
 hookfunction(game.Players.LocalPlayer.IsInGroup, function() return true end)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/GravesFr/STREAMABLE/main/MAIN"))()'))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GravesFr/STREAMABLE/main/MAIN"))()
 local Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/GravesFr/STREAMABLE/main/SIDE"))()
 
 Aiming.TeamCheck(false)
@@ -178,4 +178,3 @@ RunService:BindToRenderStep("AimLock", 0, function()
 
     end
 end)
-
