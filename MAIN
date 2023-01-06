@@ -184,4 +184,15 @@ RunService:BindToRenderStep("AimLock", 0, function()
 end)
 
 
+getgenv().auto_prediction = false
+getgenv().auto_prediction_refreshrate = 5
 
+while getgenv().auto_prediction == true do
+local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+    local Value = tostring(ping)
+    local pingValue = Value:split(" ")
+    local PingNumber = pingValue[1]
+    
+  getgenv().prediction = PingNumber / 1000 + 0.025 / 0.5
+  wait(getgenv().auto_prediction_refreshrate)
+  end
