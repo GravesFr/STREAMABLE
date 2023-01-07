@@ -33,6 +33,10 @@ local DaHoodSettings = {
     AimLockKeybind = Enum.KeyCode.E,
 
     Resolver = false,
+
+    auto_prediction = false,
+
+    auto_prediction_refreshrate = 0,
     
 }
 --------------------------------------------------
@@ -179,31 +183,30 @@ RunService:BindToRenderStep("AimLock", 0, function()
 end)
 
 
-getgenv().auto_prediction = false
-getgenv().auto_prediction_refreshrate = 0
 
-while getgenv().auto_prediction == true do
+
+while DaHoodSettings.auto_prediction == true do
     local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
     local pingValue = string.split(ping, " ")[1]
     local pingNumber = tonumber(pingValue)
    
     if pingNumber < 40 then
-        getgenv().prediction = 0.1233002
+        DaHoodSettings.Prediction = 0.1233002
     elseif pingNumber < 50 then
-        getgenv().prediction = 0.1256
+        DaHoodSettings.Prediction = 0.1256
     elseif pingNumber < 60 then
-        getgenv().prediction = 0.1225
+        DaHoodSettings.Prediction = 0.1225
     elseif pingNumber < 70 then
-        getgenv().prediction = 0.1229
+        DaHoodSettings.Prediction = 0.1229
     elseif pingNumber < 80 then
-        getgenv().prediction = 0.131
+        DaHoodSettings.Prediction = 0.131
     elseif pingNumber < 90 then
-      getgenv().prediction = 0.134
+        DaHoodSettings.Prediction = 0.134
     elseif pingNumber < 100 then
-        getgenv().prediction = 0.136
+        DaHoodSettings.Prediction = 0.136
         elseif pingNumber < 110 then
-        getgenv().prediction = 0.1375
+        DaHoodSettings.Prediction = 0.1375
     end
  
-    wait(getgenv().auto_prediction_refreshrate)
+    wait(DaHoodSettings.auto_prediction_refreshrate)
 end
