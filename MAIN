@@ -26,24 +26,21 @@ local CurrentCamera = Workspace.CurrentCamera
 ---------------------------------------------------------------
 local DaHoodSettings = {
     
-    SilentAim = getgenv().silentaim,
+    SilentAim = true,
 
     AimLock = false,
 
-    Prediction = getgenv().prediction,
+    Prediction = 0.1,
 
     AimLockKeybind = Enum.KeyCode.E,
 
-    Resolver = getgenv().resolver,
+    Resolver = false,
     
 }
 --------------------------------------------------
-getgenv().silentaim = true
-getgenv().prediction = 0.1
-getgenv().resolver = true
-getgenv().Aiming.FOV = 5.5
-
 getgenv().DaHoodSettings = DaHoodSettings        
+getgenv().Aiming.FOV = 7       
+
 --------------------------------------------------- -fov 5.5-6.6 is legit
 
 function Aiming.Check()
