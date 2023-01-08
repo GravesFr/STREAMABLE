@@ -28,7 +28,7 @@ local DaHoodSettings = {
 
     AimLock = false,
 
-    Prediction = 0.1,
+    Prediction = getgenv().prediction,
 
     AimLockKeybind = Enum.KeyCode.E,
 
@@ -39,11 +39,12 @@ local DaHoodSettings = {
 }
 --------------------------------------------------
 getgenv().DaHoodSettings = DaHoodSettings        
-getgenv().Aiming.FOV = 7   
+getgenv().Aiming.FOV = 7  
+getgenv().prediction = 0.1
 
-getgenv().auto_prediction = true,
+getgenv().auto_prediction = true
 
-    getgenv().auto_prediction_refreshrate = 5,    
+getgenv().auto_prediction_refreshrate = 5   
 
 --------------------------------------------------- -fov 5.5-6.6 is legit
 
@@ -155,7 +156,7 @@ __index = hookmetamethod(game, "__index", function(t, k)
 
         if (DaHoodSettings.SilentAim and (k == "Hit" or k == "Target")) then
 
-            local Hit = SelectedPart.CFrame + (SelectedPart.Velocity * DaHoodSettings.Prediction)
+            local Hit = SelectedPart.CFrame + (SelectedPart.Velocity * getgenv().prediction)
 
             return (k == "Hit" and Hit or SelectedPart)
 
@@ -177,7 +178,7 @@ RunService:BindToRenderStep("AimLock", 0, function()
 
         local SelectedPart = Aiming.SelectedPart
 
-        local Hit = SelectedPart.CFrame + (SelectedPart.Velocity * DaHoodSettings.Prediction)
+        local Hit = SelectedPart.CFrame + (SelectedPart.Velocity * getgenv().prediction)
 
         CurrentCamera.CFrame = CFrame.lookAt(CurrentCamera.CFrame.Position, Hit.Position)
 
@@ -193,21 +194,21 @@ while getgenv().auto_prediction == true do
     local pingNumber = tonumber(pingValue)
    
     if pingNumber < 40 then
-        DaHoodSettings.Prediction = 0.1233002
+        getgenv().prediction = 0.1233002
     elseif pingNumber < 50 then
-        DaHoodSettings.Prediction = 0.1256
+        getgenv().prediction = 0.1256
     elseif pingNumber < 60 then
-        DaHoodSettings.Prediction = 0.1225
+        getgenv().prediction = 0.1225
     elseif pingNumber < 70 then
-        DaHoodSettings.Prediction = 0.1229
+        getgenv().prediction = 0.1229
     elseif pingNumber < 80 then
-        DaHoodSettings.Prediction = 0.131
+        getgenv().prediction = 0.131
     elseif pingNumber < 90 then
-        DaHoodSettings.Prediction = 0.134
+        getgenv().prediction = 0.134
     elseif pingNumber < 100 then
-        DaHoodSettings.Prediction = 0.136
+        getgenv().prediction = 0.136
         elseif pingNumber < 110 then
-        DaHoodSettings.Prediction = 0.1375
+        getgenv().prediction = 0.1375
     end
  
     wait(getgenv().auto_prediction_refreshrate)
