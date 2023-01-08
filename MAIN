@@ -34,14 +34,16 @@ local DaHoodSettings = {
 
     Resolver = false,
 
-    auto_prediction = false,
-
-    auto_prediction_refreshrate = 0,
+   
     
 }
 --------------------------------------------------
 getgenv().DaHoodSettings = DaHoodSettings        
-getgenv().Aiming.FOV = 7       
+getgenv().Aiming.FOV = 7   
+
+getgenv().auto_prediction = true,
+
+    getgenv().auto_prediction_refreshrate = 5,    
 
 --------------------------------------------------- -fov 5.5-6.6 is legit
 
@@ -185,7 +187,7 @@ end)
 
 
 
-while DaHoodSettings.auto_prediction == true do
+while getgenv().auto_prediction == true do
     local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
     local pingValue = string.split(ping, " ")[1]
     local pingNumber = tonumber(pingValue)
@@ -208,5 +210,5 @@ while DaHoodSettings.auto_prediction == true do
         DaHoodSettings.Prediction = 0.1375
     end
  
-    wait(DaHoodSettings.auto_prediction_refreshrate)
+    wait(getgenv().auto_prediction_refreshrate)
 end
