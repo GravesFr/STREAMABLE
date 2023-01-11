@@ -40,9 +40,7 @@ getgenv().Aiming = {
     ShowFOV = false,
     FOV = 25,
     FOVSides = 100,
-    FOVTrans = 1,
-    FOVThickness = 1,
-    FOVColour = Color3fromRGB(0, 0, 0),
+    
 
     VisibleCheck = true,
     
@@ -70,9 +68,9 @@ local Aiming = getgenv().Aiming
 
 -- // Create circle
 local circle = Drawingnew("Circle")
-circle.Transparency = Aiming.FOVTrans
-circle.Thickness = Aiming.FOVThickness
-circle.Color = Aiming.FOVColour
+circle.Transparency = 0.5
+circle.Thickness = 0.5
+circle.Color = (0, 0, 0)
 circle.Filled = false
 Aiming.FOVCircle = circle
 
@@ -339,7 +337,7 @@ function Aiming.GetClosestTargetPartToCursor(Character)
         -- // Get the length between Mouse and Target Part (on screen)
         local PartPos, onScreen = WorldToViewportPoint(CurrentCamera, TargetPart.Position)
         local GuiInset = GetGuiInset(GuiService)
-        local Magnitude = (Vector2new(PartPos.X, PartPos.Y - GuiInset.Y) - Vector2new(Mouse.X, Mouse.Y)).Magnitude
+        local Magnitude = (Vector2new(PartPos.X, PartPos.Y - GuiInset.Y) - Vector2new(Mouse.X + math.random(2,5), Mouse.Y + math.random(2,5))).Magnitude
 
         -- //
         if (Magnitude < ShortestDistance) then
