@@ -28,7 +28,7 @@ local DaHoodSettings = {
 
     AimLock = false,
 
-    Prediction = getgenv().prediction,
+    Prediction = 0,
 
     AimLockKeybind = Enum.KeyCode.E,
 
@@ -38,9 +38,7 @@ local DaHoodSettings = {
     
 }
 --------------------------------------------------
-getgenv().DaHoodSettings = DaHoodSettings        
-getgenv().Aiming.FOV = 7  
-getgenv().prediction = 0.1
+Aiming.FOV = 7  
 
 getgenv().auto_prediction = true
 
